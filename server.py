@@ -8,7 +8,9 @@ app = Flask(__name__)
 #         num -= 1
 #         total = total * (num)
 #     return total 
-        
+
+def json(inp, outp):
+    return str("{\n   \"input\": "+str(inp)+",\n   \"output\": "+str(outp)+"\n}")        
         
         
 @app.route('/')
@@ -28,8 +30,10 @@ def handle_factorial(num):
     for i in range(1, int(num) - 1):
         use -= 1
         total = total * use
-    return str(total)
+    return json(num, total)
+    #return str(total)
 
+<<<<<<< HEAD
 @app.route('/fibonacci/<num>')
 def index(num=1):
     return "Python + Flask<hr>fib("+ str(num) + "): " + str(fib(num))
@@ -45,12 +49,24 @@ def fib(n):
 
 @app.route('/is-prime/<int>')
 def handle_prime(int):
+=======
+# @app.route('/is-prime/<int>')
+# def handle_prime(int):
+>>>>>>> 0842d319a4be05864dbdf4db6bb900255976ef41
 
     
-    return
+#     return
+
+# @app.route('/fibonacci/<num>')
+# def handle_fibonacci(int(num)):
+#     use = 0
+#     for i in range (int(num)):
+#         use = use + i
+#     return str(use)
 
 # @app.route('/slack-alert/<string>')
 
+# @app.route('/slack-alert/<string>')
 app.debug = True
 
 
