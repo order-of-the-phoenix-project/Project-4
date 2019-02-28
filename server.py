@@ -33,7 +33,6 @@ def handle_factorial(num):
     return json(num, total)
     #return str(total)
 
-<<<<<<< HEAD
 @app.route('/fibonacci/<num>')
 def index(num=1):
     return "Python + Flask<hr>fib("+ str(num) + "): " + str(fib(num))
@@ -49,10 +48,8 @@ def fib(n):
 
 @app.route('/is-prime/<int>')
 def handle_prime(int):
-=======
 # @app.route('/is-prime/<int>')
 # def handle_prime(int):
->>>>>>> 0842d319a4be05864dbdf4db6bb900255976ef41
 
     
 #     return
