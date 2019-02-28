@@ -36,8 +36,16 @@ def handle_prime(int):
     
     return
 
+@app.route('/fibonacci/<num>')
+def handle_fibonacci(int(num)):
+    use = 0
+    for i in range (int(num)):
+        use = use + i
+    return str(use)
+
 # @app.route('/slack-alert/<string>')
 
+@app.route('/slack-alert/<string>')
 app.debug = True
 
 
