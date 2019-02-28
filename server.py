@@ -8,7 +8,9 @@ app = Flask(__name__)
 #         num -= 1
 #         total = total * (num)
 #     return total 
-        
+
+def json(inp, outp):
+    return str("{\n   \"input\": "+inp+",\n   \"output\": "+outp+"\n}")        
         
         
 @app.route('/')
@@ -28,7 +30,8 @@ def handle_factorial(num):
     for i in range(1, int(num) - 1):
         use -= 1
         total = total * use
-    return str(total)
+    json(num, total)
+    #return str(total)
 
 @app.route('/is-prime/<int>')
 def handle_prime(int):
