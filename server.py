@@ -1,6 +1,7 @@
 from flask import request, jsonify
 from flask import json
-
+#from slackclient import slackclient
+#also need to add a bot to the course slack and put the API key in the slack function
 app = Flask(__name__)
 
 # NOTE: error handling for letters entered when number expected:
@@ -69,36 +70,13 @@ def handle_prime(int):
 #         use = use + i
 #     return str(use)
 
-# @app.route('/slack-alert/<string>')
+##Should be most of the slack alert API
+#def handle_slack
+#    message = input("What is the message?")
+#    slack.chat.post_message('#what channel we want to send the message to', message):
+#    response = #T/F response
+#    jsonoutput(message,response)
 
-# @app.route('/slack-alert/<string>')
+
 app.debug = True
-
-
-# Back up URI endpoint in case changing the return fuction in each original @app.route doesn't work
-#       return handle_md5( 
-#            "input" = ,
-#            "output" = ,
-#            )
-#    @app.route('/factorial/<int>')
-#            return handle_factorial()( 
-#            "input" = ,
-#            "output" = ,
-#            )
-#    @app.route('/fibonacci/<int>')
-#            return fib( 
-#            "input" = ,
-#            "output" = ,
-#            )
-#    @app.route('/is-prime/<int>')
-#            return handle_prime( 
-#            "input" = ,
-#            "output" = ,
-#            )
-#    @app.route('/slack-alert/<string>')
-#            return handle_slack( 
-#            "input" = ,
-#           "output" = ,
-#            )
-
 app.run('0.0.0.0')
