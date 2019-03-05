@@ -78,12 +78,12 @@ app.debug = True
 
 
 # JSON payload
-@app.route('/md5/<string>')
-with app.
+# @app.route('/md5/<string>')
+# # with app.
 
-@app.route('/factorial/<int>')
-@app.route('/fibonacci/<int>')
-@app.route('is-prime/<int>')
-@app.route('slack-alert/<string>')
+# @app.route('/factorial/<int>')
+# @app.route('/fibonacci/<int>')
+# @app.route('is-prime/<int>')
+# @app.route('slack-alert/<string>')
 
 app.run('0.0.0.0')
