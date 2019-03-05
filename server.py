@@ -1,5 +1,3 @@
-import json
-from flask import Flask
 from flask import request, jsonify
 
 app = Flask(__name__)
@@ -18,8 +16,7 @@ app = Flask(__name__)
 #     return total 
 
 def jsonoutput(inp, outp):
-    # return str("{\n   \"input\": "+str(inp)+",\n   \"output\": "+str(outp)+"\n}")     
-    return json.dumps({'input': int(inp), 'output': int(outp)}, sort_keys=True, indent=4, separators=(',', ': '))   
+    return jsonify(input=inp, output=outp) 
         
         
 @app.route('/')
