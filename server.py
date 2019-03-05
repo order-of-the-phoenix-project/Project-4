@@ -1,5 +1,6 @@
 import json
 from flask import Flask
+from flask import request, jsonify
 
 app = Flask(__name__)
 
@@ -75,5 +76,14 @@ def handle_prime(int):
 # @app.route('/slack-alert/<string>')
 app.debug = True
 
+
+# JSON payload
+@app.route('/md5/<string>')
+with app.
+
+@app.route('/factorial/<int>')
+@app.route('/fibonacci/<int>')
+@app.route('is-prime/<int>')
+@app.route('slack-alert/<string>')
 
 app.run('0.0.0.0')
