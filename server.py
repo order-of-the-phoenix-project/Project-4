@@ -1,5 +1,4 @@
-from flask import request, jsonify
-from flask import json
+from flask import request, jsonify, json, Flask
 #from slackclient import slackclient
 #also need to add a bot to the course slack and put the API key in the slack function
 app = Flask(__name__)
@@ -38,7 +37,7 @@ def handle_factorial(num):
     for i in range(1, int(num) - 1):
         use -= 1
         total = total * use
-    return jsonoutput(num, total)
+    return jsonoutput(int(num), total)
     #return str(total)
 
 @app.route('/fibonacci/<num>')
