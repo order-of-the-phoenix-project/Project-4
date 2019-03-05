@@ -76,4 +76,4 @@ def handle_prime(int):
 app.debug = True
 
 
-app.run()
+app.run('0.0.0.0')
