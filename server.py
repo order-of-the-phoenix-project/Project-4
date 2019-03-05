@@ -1,6 +1,13 @@
+import json
 from flask import Flask
 
 app = Flask(__name__)
+
+# NOTE: error handling for letters entered when number expected:
+# try:
+#     float(element)
+# except ValueError:
+#     print "Not a float"
 
 # def factorial(num):
 #     total = num
@@ -9,8 +16,9 @@ app = Flask(__name__)
 #         total = total * (num)
 #     return total 
 
-def json(inp, outp):
-    return str("{\n   \"input\": "+str(inp)+",\n   \"output\": "+str(outp)+"\n}")        
+def jsonoutput(inp, outp):
+    # return str("{\n   \"input\": "+str(inp)+",\n   \"output\": "+str(outp)+"\n}")     
+    return json.dumps({'input': int(inp), 'output': int(outp)}, sort_keys=True, indent=4, separators=(',', ': '))   
         
         
 @app.route('/')
@@ -30,11 +38,11 @@ def handle_factorial(num):
     for i in range(1, int(num) - 1):
         use -= 1
         total = total * use
-    return json(num, total)
+    return jsonoutput(num, total)
     #return str(total)
 
 @app.route('/fibonacci/<num>')
-def index(num=1):
+def handle_fibonacci(num=1):
     return "Python + Flask<hr>fib("+ str(num) + "): " + str(fib(num))
 
 def fib(n):
@@ -48,6 +56,7 @@ def fib(n):
 
 @app.route('/is-prime/<int>')
 def handle_prime(int):
+    pass # remove this line when the code for this function is added
 # @app.route('/is-prime/<int>')
 # def handle_prime(int):
 
