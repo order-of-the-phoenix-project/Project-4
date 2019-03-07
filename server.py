@@ -58,9 +58,9 @@ def fib(n):
 
 
 @app.route('/is-prime/<number>')
-def handle_prime():
-    num = int(num)
-    pass # remove this line when the code for this function is added
+def handle_prime(number):
+    num = int(number)
+    #pass # remove this line when the code for this function is added
 # @app.route('/is-prime/<int>')
 # def handle_prime(int):
 
@@ -69,16 +69,17 @@ def handle_prime():
    # check for factors
         for i in range(2,num):
             if (num % i) == 0:
-                print(num,"is not a prime number")
-                print(num, "is a prime number")
+                return (str(num) + " is not a prime number")
+                #print(num, "is a prime number")
                 break
         else:
-            print(num,"is a prime number")
+            #statement = str(num) + "is a prime number"
+            return (str(num) + " is a prime number")
        
 # if input number is less than
 # or equal to 1, it is not prime
     else:
-        print(num,"is not a prime number")
+        return (str(num) + " is not a prime number")
     
 #     return
 
@@ -90,16 +91,16 @@ def handle_prime():
 #     return str(use)
 
 ##Should be most of the slack alert API
-@app.route('/slack/<message>')
-def handle_slack(message):
-    slack_token = os.environ["SLACK_API_TOKEN"]
-    sc = SlackClient(slack_token)
+#@app.route('/slack/<message>')
+#def handle_slack(message):
+#     slack_token = os.environ[]
+#     sc = SlackClient(slack_token)
 
-    sc.api_call(
-    "chat.postMessage",
-    channel="ootpp",
-    text=str(message)
-)
+#     sc.api_call(
+#     "chat.postMessage",
+#     channel="ootpp",
+#     text=str(message)
+# )
     # slackurl = "https://hooks.slack.com/services/TFCTWE2SH/BGMFM5AAG/G8ENlXUDl6A68"
 
     # payload = {"text": str(message), "channel": "#ootpp"}
