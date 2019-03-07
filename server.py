@@ -1,5 +1,8 @@
 from flask import request, jsonify, json, Flask
 import requests
+import os 
+from slackclient import SlackClient
+
 #from slackclient import slackclient
 #also need to add a bot to the course slack and put the API key in the slack function
 app = Flask(__name__)
@@ -54,8 +57,9 @@ def fib(n):
         return fib(n - 1) + fib(n - 2)
 
 
-@app.route('/is-prime/<int>')
-def handle_prime(int):
+@app.route('/is-prime/<number>')
+def handle_prime():
+    num = int(num)
     pass # remove this line when the code for this function is added
 # @app.route('/is-prime/<int>')
 # def handle_prime(int):
@@ -88,12 +92,20 @@ def handle_prime(int):
 ##Should be most of the slack alert API
 @app.route('/slack/<message>')
 def handle_slack(message):
-    slackurl = "https://hooks.slack.com/services/TFCTWE2SH/BGMFM5AAG/G8ENlXUDl6A68"
+    slack_token = os.environ["SLACK_API_TOKEN"]
+    sc = SlackClient(slack_token)
 
-    payload = {"text": message, "channel": "#ootpp"}
-    r = requests.post(slackurl, payload)
-    statement = "Message: " + "\"" + str(message) + "\"" + " was sucessfully posted to slack"
-    return statement
+    sc.api_call(
+    "chat.postMessage",
+    channel="ootpp",
+    text=str(message)
+)
+    # slackurl = "https://hooks.slack.com/services/TFCTWE2SH/BGMFM5AAG/G8ENlXUDl6A68"
+
+    # payload = {"text": str(message), "channel": "#ootpp"}
+    # r = requests.post(slackurl, payload)
+    # statement = "Message: " + "\"" + str(message) + "\"" + " was sucessfully posted to slack"
+    # return statement
 #    slack.chat.postMessage('#what channel we want to send the message to', message):
 #    response = #T/F response
 #    jsonoutput(message,response)
