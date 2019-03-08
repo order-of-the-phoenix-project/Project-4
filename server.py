@@ -93,7 +93,7 @@ def handle_prime(number):
 ##Should be most of the slack alert API
 @app.route('/slack/<message>')
 def handle_slack(message):
-    slack_token = "xoxp-522948478901-522616343636-569647035457-c37a0e69d0cf795b1f5c094f633437b2"
+    slack_token = "insert-token-here"
     sc = SlackClient(slack_token)
 
     sc.api_call(
