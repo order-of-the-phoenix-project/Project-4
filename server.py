@@ -44,7 +44,6 @@ def handle_factorial(num):
     #return str(total)
 
 @app.route('/fibonacci/<num>')
-
 def fibonacci(num):
     a = 0
     b = 1
