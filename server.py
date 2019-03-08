@@ -3,8 +3,7 @@ import requests
 import os 
 from slackclient import SlackClient
 
-#from slackclient import slackclient
-#also need to add a bot to the course slack and put the API key in the slack function
+
 app = Flask(__name__)
 
 # NOTE: error handling for letters entered when number expected:
