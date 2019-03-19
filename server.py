@@ -1,6 +1,5 @@
 from flask import request, jsonify, json, Flask
-import requests
-import os 
+import requests, os, hashlib
 from slackclient import SlackClient
 
 
@@ -27,10 +26,10 @@ def jsonoutput(inp, outp):
 def index():
     return "it works"
 
-# @app.route('/md5/<string>')
-# def handle_md5(string):
-#     h = hashlib.md5(bytes(string, 'utf-8')).hexdigest()
-#     return h
+@app.route('/md5/<string>')
+def handle_md5(string):
+    h = hashlib.md5(bytes(string, 'utf-8')).hexdigest()
+    return jsonoutput(string, h)
 
 @app.route('/factorial/<num>')
 def handle_factorial(num):
