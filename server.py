@@ -1,6 +1,5 @@
 from flask import request, jsonify, json, Flask
-import requests
-import os 
+import requests, os, hashlib
 from slackclient import SlackClient
 
 
