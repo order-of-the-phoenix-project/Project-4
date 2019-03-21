@@ -57,7 +57,7 @@ def fibonacci(num):
 @app.route('/is-prime/<number>')
 def handle_prime(number):
     try:    
-    num = int(number)
+        num = int(number)
         for i in range(2,num):
             if (num % i) == 0:
                 return jsonoutput(str(num) + " is not a prime number")
