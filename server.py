@@ -47,6 +47,7 @@ def handle_factorial(num):
 @app.route('/fibonacci/<num>')
 def fibonacci(num):
     try:
+
         if num < 0:
             return jsonoutput(num, 'Input is not a positive integer')   
         a = 0
@@ -55,10 +56,11 @@ def fibonacci(num):
         while b <= int(num):
             fibo.append(b)
             a, b = b, a+b
-        return jsonoutput(int(num), fibo)
-    except ValueError:
-        return jsonoutput(num, 'Input is not a positive integer')
 
+        return jsonoutput(int(num), fibo)    
+    except ValueError:
+        return jsonoutput(num, "Input is not a positive integer")
+        
 @app.route('/is-prime/<number>')
 def handle_prime(number):
     try:    
