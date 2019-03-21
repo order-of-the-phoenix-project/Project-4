@@ -56,20 +56,16 @@ def fibonacci(num):
 
 @app.route('/is-prime/<number>')
 def handle_prime(number):
+    try:    
     num = int(number)
-    #pass # remove this line when the code for this function is added
-# @app.route('/is-prime/<int>')
-# def handle_prime(int):
-
-    if num > 1:
         for i in range(2,num):
             if (num % i) == 0:
                 return (str(num) + " is not a prime number")
                 break
-        else:
-            return (str(num) + " is a prime number")
-    else:
-        return (str(num) + " is not a prime number")
+            else:
+                return jsonoutput(str(num) + " is a prime number")
+    except ValueError:
+        return jsonoutput(num, "Input is not a positive integer")
 
 # @app.route('/fibonacci/<num>')
 # def handle_fibonacci(int(num)):
