@@ -60,7 +60,7 @@ def handle_prime(number):
     num = int(number)
         for i in range(2,num):
             if (num % i) == 0:
-                return (str(num) + " is not a prime number")
+                return jsonoutput(str(num) + " is not a prime number")
                 break
             else:
                 return jsonoutput(str(num) + " is a prime number")
