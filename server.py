@@ -26,11 +26,13 @@ def jsonoutput(inp, outp):
 def index():
     return "it works"
 
+# This URI will take an input of a string and will return the same string but as an MD5 hash
 @app.route('/md5/<string>')
 def handle_md5(string):
     h = hashlib.md5(bytes(string, 'utf-8')).hexdigest()
     return jsonoutput(string, h)
 
+# This URI will return a factorial of an input of a positive integer
 @app.route('/factorial/<num>')
 def handle_factorial(num):
 
@@ -42,6 +44,7 @@ def handle_factorial(num):
     return jsonoutput(int(num), total)
     #return str(total)
 
+# This URI will return a list of fibonacci numbers that are less than the input number
 @app.route('/fibonacci/<num>')
 def fibonacci(num):
     a = 0
@@ -52,6 +55,7 @@ def fibonacci(num):
         a, b = b, a+b
     return jsonoutput(int(num), fibo)    
 
+# This URI will return a boolean value depending on if a number is prime
 @app.route('/is-prime/<number>')
 def handle_prime(number):
     num = int(number)
@@ -85,6 +89,7 @@ def handle_prime(number):
 #         use = use + i
 #     return str(use)
 
+# This URI will post a message to a slack channel 
 ##Should be most of the slack alert API
 @app.route('/slack/<message>')
 def handle_slack(message):
