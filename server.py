@@ -74,7 +74,7 @@ def handle_slack(message):
     channel="ootpp",
     text=str(message)
 )
-    return jsonify(message = True)
+    return jsonify(True)
 
 app.debug = False
 app.run('0.0.0.0')
