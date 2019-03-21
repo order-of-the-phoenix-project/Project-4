@@ -22,7 +22,6 @@ app = Flask(__name__)
 def jsonoutput(inp, outp):
     return jsonify(input=inp, output=outp) 
         
-        
 @app.route('/')
 def index():
     return "it works"
@@ -34,14 +33,16 @@ def index():
 
 @app.route('/factorial/<num>')
 def handle_factorial(num):
-
-    use = int(num)
-    total = int(num)
-    for i in range(1, int(num) - 1):
-        use -= 1
-        total = total * use
-    return jsonoutput(int(num), total)
-    #return str(total)
+    try:
+        use = int(num)
+        total = int(num)
+        for i in range(1, int(num) - 1):
+            use -= 1
+            total = total * use
+        return jsonoutput(int(num), total)
+        #return str(total)
+    except ValueError:
+        return jsonoutput(num, "Input is not a positive integer")
 
 @app.route('/fibonacci/<num>')
 def fibonacci(num):
