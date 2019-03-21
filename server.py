@@ -97,7 +97,7 @@ def handle_slack(message):
     channel="ootpp",
     text=str(message)
 )
-    return ("Posted:  "+str(message))
+    return jsonify(message = True)
     # slackurl = "https://hooks.slack.com/services/TFCTWE2SH/BGMFM5AAG/G8ENlXUDl6A68"
 
     # payload = {"text": str(message), "channel": "#ootpp"}
