@@ -36,6 +36,8 @@ def handle_factorial(num):
     try:
         use = int(num)
         total = int(num)
+        if use < 0:
+            return jsonoutput(use, 'Input is not a positive integer')
         for i in range(1, int(num) - 1):
             use -= 1
             total = total * use
@@ -47,7 +49,7 @@ def handle_factorial(num):
 @app.route('/fibonacci/<num>')
 def fibonacci(num):
     try:
-
+        num = int(num)
         if num < 0:
             return jsonoutput(num, 'Input is not a positive integer')   
         a = 0
