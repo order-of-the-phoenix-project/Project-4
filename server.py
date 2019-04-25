@@ -15,7 +15,7 @@ def index():
 @app.route('/md5/<string>')
 def handle_md5(string):
     h = hashlib.md5(bytes(string, 'utf-8')).hexdigest()
-    return h
+    return jsonoutput(string, h)
 
 # This URI will return a factorial of an input of a positive integer
 @app.route('/factorial/<num>')
@@ -23,13 +23,11 @@ def handle_factorial(num):
     try:
         use = int(num)
         total = int(num)
-        if use < 0:
-            return jsonoutput(use, 'Input is not a positive integer')
         for i in range(1, int(num) - 1):
             use -= 1
             total = total * use
         return jsonoutput(int(num), total)
-        
+        #return str(total)
     except ValueError:
         return jsonoutput(num, "Input is not a positive integer")
 
@@ -37,46 +35,38 @@ def handle_factorial(num):
 @app.route('/fibonacci/<num>')
 def fibonacci(num):
     try:
-        num = int(num)
-        if num < 0:
-            return jsonoutput(num, 'Input is not a positive integer')   
-        a = 0
-        b = 1
-        fibo = [a]
-        while b <= int(num):
-            fibo.append(b)
-            a, b = b, a+b
-
-        return jsonoutput(int(num), fibo)    
+        if num > 0:
+            a = 0
+            b = 1
+            fibo = [a]
+            while b <= int(num):
+                fibo.append(b)
+                a, b = b, a+b
+            return jsonoutput(int(num), fibo) 
+        else:
+            return jsonoutput(int(num), "Number is not positive")
     except ValueError:
-        return jsonoutput(num, "Input is not a positive integer")
-        
+        return jsonoutput(num, "Input is not an integer")
+
 @app.route('/is-prime/<number>')
 def handle_prime(number):
     try:    
         num = int(number)
         for i in range(2,num):
             if (num % i) == 0:
-                return (str(num) + " is not a prime number")
+                return jsonoutput(number, "False")
                 break
             else:
-                return (str(num) + " is a prime number")
+                return jsonoutput(number, "True")
     except ValueError:
         return jsonoutput(number, "Input is not a positive integer")
 
 # This URI will post a message to a slack channel 
 ##Should be most of the slack alert API
-@app.route('/slack/<message>')
+@app.route('/slack-alert/<message>')
 def handle_slack(message):
-    slack_token = os.environ["SLACK_API_TOKEN"]
-    sc = SlackClient(slack_token)
-
-    sc.api_call(
-    "chat.postMessage",
-    channel="ootpp",
-    text=str(message)
-)
-    return jsonify(True)
+    requests.post("https://hooks.slack.com/services/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", json={"text": message})
+    return jsonify(input = message, output = True)
 
 app.debug = False
 app.run('0.0.0.0')
